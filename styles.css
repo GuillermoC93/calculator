@@ -1,0 +1,10 @@
+.container {
+    margin: auto;
+    height: 500px;
+    width: 350px;
+    background-color: lightgray;
+}
+
+button {
+    background-color: gray;
+}
