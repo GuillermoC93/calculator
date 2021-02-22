@@ -26,3 +26,16 @@ let operate = function(op, n1, n2) {
         return divide(n1, n2);
     }
 }
+
+const buttons = document.querySelectorAll("button");
+const display = document.querySelector(".display-number");
+
+let populateDisplay = function(num) {
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            firstValue = display.textContent += button.className;
+        })
+    })
+}
+
+populateDisplay();

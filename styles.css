@@ -11,14 +11,14 @@
     grid-row: 2 / 5;
     grid-column: 1 / 5;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
+    grid-gap: 10px;
+    padding: 10px;
 }
 
 .first-row {
     grid-column: 1 / 5;
     display: flex;
+    justify-content: space-between;
 }
 
 .second-row {
@@ -40,11 +40,24 @@ button {
     background-color: gray;
     flex-grow: 1;
     font-size: 25px;
+    width: 0;
+    border: 10px solid black;
+    border-radius: 10px;
 }
 
 .display {
+    position: relative;
     margin-top: 10px;
     height: 100px;
     background-color: gray;
     grid-column: 1 / span 4;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.display-number {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 45px;
 }
