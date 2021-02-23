@@ -42,13 +42,12 @@ let populateDisplay = function() {
             }
         })
     })
-    return displayValue;
 }
 
 let getOperator = function() {
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
-            if (button.name) {
+            if (button.dataset.op) {
                 firstValue = displayValue;
                 displayValue = "";
                 op = button.name;
@@ -58,12 +57,12 @@ let getOperator = function() {
     })
 }
 
-
 let clearCalc = function() {
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             if (button.name == "C") {
                 firstValue = undefined;
+                secondValue = undefined;
                 op = undefined;
                 display.textContent = "";
             }
@@ -78,7 +77,11 @@ let runCalcs = function() {
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             if (button.name == "=") {
-                display.textContent = operate(op, firstValue, secondValue);
+                if (firstValue) {
+                    secondValue = displayValue;
+                }
+
+                displayValue = display.textContent = (operate(op, Number(firstValue), Number(secondValue)));
             }
         })
     })
