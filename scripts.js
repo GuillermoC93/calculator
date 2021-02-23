@@ -29,13 +29,59 @@ let operate = function(op, n1, n2) {
 
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector(".display-number");
+let displayValue
+let firstValue
+let secondValue
+let op
 
-let populateDisplay = function(num) {
+let populateDisplay = function() {
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
-            firstValue = display.textContent += button.className;
+            if (!button.name) {
+                displayValue = display.textContent += button.className;
+            }
+        })
+    })
+    return displayValue;
+}
+
+let getOperator = function() {
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (button.name) {
+                firstValue = displayValue;
+                displayValue = "";
+                op = button.name;
+                display.textContent = "";
+            }
         })
     })
 }
 
-populateDisplay();
+
+let clearCalc = function() {
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (button.name == "C") {
+                firstValue = undefined;
+                op = undefined;
+                display.textContent = "";
+            }
+        })
+    })
+}
+
+let runCalcs = function() {
+    populateDisplay();
+    getOperator();
+    clearCalc();
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (button.name == "=") {
+                display.textContent = operate(op, firstValue, secondValue);
+            }
+        })
+    })
+}
+
+runCalcs();
